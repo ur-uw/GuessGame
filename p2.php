@@ -1,32 +1,16 @@
 <?php
 session_start();
-if (isset($_POST["ans"])){
-    $answer= $_POST["ans"];
-}
-$counter;
-if (isset($_SESSION["q"])) {
-    $counter = 0;
-    $question = $_SESSION["q"];
-    if (isset($_POST["hidden"])) {
-        $counter = $_POST["hidden"];
+require 'includes/db.inc.php';
+$counter = 0;
+    if (isset($_GET["counter"])) {
+    $counter = $_GET["counter"];
+       if ($counter==5) {
+           session_unset();
+           session_destroy();
+        header('Location: index.php?error=you%20lose');
+       }
     }
-    //compairing
-    if (isset($_POST["ans"]) && $question == $answer) {
-        session_unset();
-        session_destroy();
-        
-        header('Location: index.php?success=You%20won');
-    } elseif (isset($_POST["sub-a"]) && isset($_POST["ans"]) && $question !== $answer) {
-        $counter++;
-        if ($counter == 5) {
-            header('Location: index.php?error=YOU%20LOSE');
-            session_unset();
-            session_destroy();
-        }
-    }
-}
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -51,13 +35,9 @@ if (isset($_SESSION["q"])) {
             </span>
         <?php endif; ?>
         <div class="well">
-            <form action="p2.php" method="POST" class="form-group">
-                <?php if (!isset($_SESSION["q"])) {
-                    header('Loacation: p2.php');
-                }else {
-                    echo "<input type='hidden' name='hidden' value='" . $counter . "'>";
-                }
-                
+            <form action="includes/compare.inc.php" method="POST" class="form-group">
+                <?php
+                 echo "<input type='hidden' name='hidden' value='" . $counter . "'>";   
                 ?>
                 <input type="text" class="form-control" name="ans" placeholder="Your answer">
                 <button type="submit" name="sub-a" class="btn btn-danger sub-a">Submit YOUR ANSWER</button>

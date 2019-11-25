@@ -15,7 +15,7 @@
     <h1 class="text-center text-success">player 1</h1>
     <div class="container">
         <div class="well">
-            <form class="form-group" action="index.php" method="POST">
+            <form class="form-group" action="includes/compare.inc.php" method="POST">
                 <input type="text" class="form-control" name="ask" placeholder="ASK THE QUESTION AND WAIT">
                 <button type="submit" name="sub-q" class="btn btn-primary sub-q">Submit YOUR question</button>
             </form>

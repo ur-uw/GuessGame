@@ -1,11 +1,5 @@
-<?php
-if (isset($_POST["sub-q"])) {
-    session_start();
-    $question = $_POST["ask"];
-    $_SESSION["q"] = $question;
-}
+<?php session_start(); 
 ?>
-
 <!DOCTYPE html>
 <html>
 
