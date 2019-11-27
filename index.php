@@ -1,4 +1,10 @@
-<?php session_start(); 
+<?php session_start();
+if (isset($_GET['error'])) {
+    $error = $_GET["error"];
+}
+if (isset($_GET["success"])) {
+    $success = $_GET["success"];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,6 +22,12 @@
 
 <body>
     <h1 class="text-center text-info">GUESS GAME</h1>
+    <?php if (isset($error)) : ?>
+        <div style="height:50px;" class="container alert alert-danger text-center"><?php echo $error; ?></div>
+    <?php endif; ?>
+    <?php if (isset($success)) : ?>
+        <div style="height:50px;" class="container alert alert-success text-center"><?php echo $success; ?></div>
+    <?php endif; ?>
     <?php if (!isset($_SESSION["q"])) : ?>
         <div class="container ">
             <a href="p1.php" class="btn btn-primary p1">PLAYER 1</a><br>
@@ -23,11 +35,13 @@
         </div>
     <?php endif; ?>
     <?php if (isset($_SESSION["q"])) : ?>
-        <div class="coontainer text-center">
+        <div class="container text-center">
             <div class="alert alert-warning">
                 <?php echo $_SESSION["q"]; ?>
             </div>
+            <a href="includes/compare.inc.php?action=reset" class="btn btn-danger">RESET</a>
         </div>
+        </script>
     <?php endif; ?>
 
 </body>

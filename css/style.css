@@ -2,13 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body {
     font-size: 22px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f1f1f1;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    background-size: cover;
+    background-position: center;
 }
 
 h1 {
@@ -22,7 +25,6 @@ h1 {
     height: 350px;
     position: relative;
     padding: 0;
-
 }
 
 .p1,
@@ -57,11 +59,13 @@ h1 {
     background-color: lightcyan;
     color: black;
     border: 0;
+    
 }
 
 /* ?PLAYER 1 */
+
 .well {
-    height: 50%;
+    height: 70%;
     margin-top: 25%;
 }
 
